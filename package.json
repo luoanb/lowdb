@@ -1,7 +1,7 @@
 {
-  "name": "lowdb",
+  "name": "cjs-lowdb",
   "version": "7.0.1",
-  "description": "Tiny local JSON database for Node, Electron and the browser",
+  "description": "Tiny local JSON database for Node, Electron and the browser; build for ESM and CommonJS and UMD",
   "keywords": [
     "database",
     "db",
@@ -14,24 +14,37 @@
     "localStorage",
     "sessionStorage",
     "browser",
-    "esm"
+    "esm",
+    "CommonJS"
   ],
-  "homepage": "https://github.com/typicode/lowdb#readme",
+  "homepage": "https://github.com/luoanb/lowdb#readme",
   "bugs": {
-    "url": "https://github.com/typicode/lowdb/issues"
+    "url": "https://github.com/luoanb/lowdb/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/typicode/lowdb.git"
+    "url": "git+https://github.com/luoanb/lowdb.git"
   },
   "funding": "https://github.com/sponsors/typicode",
   "license": "MIT",
   "author": "Typicode <typicode@gmail.com>",
   "type": "module",
   "exports": {
-    ".": "./lib/index.js",
-    "./node": "./lib/node.js",
-    "./browser": "./lib/browser.js"
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.esm.js",
+      "types": "./types/index.d.ts"
+    },
+    "./node": {
+      "require": "./dist/node.cjs.js",
+      "import": "./dist/node.esm.js",
+      "types": "./types/node.d.ts"
+    },
+    "./browser": {
+      "require": "./dist/browser.cjs.js",
+      "import": "./dist/browser.esm.js",
+      "types": "./types/browser.d.ts"
+    }
   },
   "types": "./lib",
   "typesVersions": {
@@ -52,18 +65,23 @@
   "scripts": {
     "test": "node --import tsx/esm --test src/**/*.test.ts src/**/**/*.test.ts",
     "lint": "eslint src --ext .ts --ignore-path .gitignore",
-    "build": "del-cli lib && tsc",
+    "build:tsc": "del-cli lib && tsc",
+    "build": "rollup -c",
     "prepublishOnly": "npm run build",
     "postversion": "git push --follow-tags && npm publish",
     "prepare": "husky install"
   },
   "dependencies": {
-    "steno": "^4.0.2"
+    "steno": "^4.0.2",
+    "tslib": "^2.6.2"
   },
+  "browser": "./dist/browser.umd.js",
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@commitlint/prompt-cli": "^18.4.3",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@sindresorhus/tsconfig": "^5.0.0",
     "@types/express": "^4.17.21",
     "@types/lodash": "^4.14.202",
@@ -74,6 +92,11 @@
     "express-async-handler": "^1.2.0",
     "husky": "^8.0.3",
     "lodash": "^4.17.21",
+    "rollup": "^4.12.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "tempy": "^3.1.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.0",

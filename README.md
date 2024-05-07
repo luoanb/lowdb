@@ -1,8 +1,14 @@
 # lowdb [![](http://img.shields.io/npm/dm/lowdb.svg?style=flat)](https://www.npmjs.org/package/lowdb) [![Node.js CI](https://github.com/typicode/lowdb/actions/workflows/node.js.yml/badge.svg)](https://github.com/typicode/lowdb/actions/workflows/node.js.yml)
 
 > Simple to use type-safe local JSON database 🦉
-> 
+>
 > If you know JavaScript, you know how to use lowdb.
+
+## Repository Description
+
+The [original repository](https://github.com/typicode/lowdb) only supports `ESM`, which is not sufficiently compatible in many scenarios, and `lowdb` requires a lot of additional configuration. Therefore, I created this repository, adding support for `CommonJS`. There have been no modifications to the source code level.
+
+## Original Repository Documentation
 
 Read or create `db.json`
 
@@ -146,7 +152,7 @@ class LowWithLodash<T> extends Low<T> {
 }
 
 const defaultData: Data = {
-  posts: [],
+  posts: []
 }
 const adapter = new JSONFile<Data>('db.json', defaultData)
 
@@ -306,8 +312,12 @@ new DataFile(filename, {
   stringify: YAML.stringify
 })
 new DataFile(filename, {
-  parse: (data) => { decypt(JSON.parse(data)) },
-  stringify: (str) => { encrypt(JSON.stringify(str)) }
+  parse: (data) => {
+    decypt(JSON.parse(data))
+  },
+  stringify: (str) => {
+    encrypt(JSON.stringify(str))
+  }
 })
 ```
 

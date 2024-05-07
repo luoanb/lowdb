@@ -1,7 +1,16 @@
 {
   "extends": "@typicode",
-  "env":{
+  "env": {
     "browser": true,
     "node": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "parser": "flow"
+      }
+    ]
   }
 }
