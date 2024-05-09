@@ -4,14 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  steno:
-    specifier: ^4.0.2
-    version: 4.0.2
-  tslib:
-    specifier: ^2.6.2
-    version: 2.6.2
-
 devDependencies:
   '@commitlint/cli':
     specifier: ^18.4.3
@@ -73,12 +65,18 @@ devDependencies:
   rollup-plugin-uglify:
     specifier: ^6.0.4
     version: 6.0.4(rollup@4.12.1)
+  steno:
+    specifier: ^4.0.2
+    version: 4.0.2
   tempy:
     specifier: ^3.1.0
     version: 3.1.0
   ts-node:
     specifier: ^10.9.2
     version: 10.9.2(@types/node@20.10.5)(typescript@5.3.3)
+  tslib:
+    specifier: ^2.6.2
+    version: 2.6.2
   tsx:
     specifier: ^4.7.0
     version: 4.7.0
@@ -3000,7 +2998,7 @@ packages:
   /steno@4.0.2:
     resolution: {integrity: sha512-yhPIQXjrlt1xv7dyPQg2P17URmXbuM5pdGkpiMB3RenprfiBlvK415Lctfe0eshk90oA7/tNq7WEiMK8RSP39A==}
     engines: {node: '>=18'}
-    dev: false
+    dev: true
 
   /string-width@2.1.1:
     resolution: {integrity: sha512-nOqH59deCq9SRHlxq1Aw85Jnt4w6KvLKqWVik6oA9ZklXLNIOlqg4F2yrT1MVaTjAqvVwdfeZ7w7aCvJD7ugkw==}
@@ -3219,6 +3217,7 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+    dev: true
 
   /tsx@4.7.0:
     resolution: {integrity: sha512-I+t79RYPlEYlHn9a+KzwrvEwhJg35h/1zHsLC2JXvhC2mdynMv6Zxzvhv5EMV6VF5qJlLlkSnMVvdZV3PSIGcg==}

@@ -1,6 +1,6 @@
 {
   "name": "cjs-lowdb",
-  "version": "7.0.1",
+  "version": "7.0.7",
   "description": "Tiny local JSON database for Node, Electron and the browser; build for ESM and CommonJS and UMD",
   "keywords": [
     "database",
@@ -28,39 +28,31 @@
   "funding": "https://github.com/sponsors/typicode",
   "license": "MIT",
   "author": "Typicode <typicode@gmail.com>",
-  "type": "module",
   "exports": {
     ".": {
       "require": "./dist/index.cjs.js",
       "import": "./dist/index.esm.js",
-      "types": "./types/index.d.ts"
+      "types": "./dist/index.d.ts"
     },
     "./node": {
       "require": "./dist/node.cjs.js",
       "import": "./dist/node.esm.js",
-      "types": "./types/node.d.ts"
+      "types": "./dist/node.d.ts"
     },
     "./browser": {
       "require": "./dist/browser.cjs.js",
       "import": "./dist/browser.esm.js",
-      "types": "./types/browser.d.ts"
-    }
-  },
-  "types": "./lib",
-  "typesVersions": {
-    "*": {
-      "node": [
-        "lib/node.d.ts"
-      ],
-      "browser": [
-        "lib/browser.d.ts"
-      ]
+      "types": "./dist/browser.d.ts"
+    },
+    "./node-cjs": {
+      "require": "./dist/node.cjs.js",
+      "types": "./dist/node.d.ts"
     }
   },
   "files": [
-    "lib",
-    "!lib/examples/**/*",
-    "!lib/**/*.test.*"
+    "dist",
+    "!dist/examples/**/*",
+    "!dist/**/*.test.*"
   ],
   "scripts": {
     "test": "node --import tsx/esm --test src/**/*.test.ts src/**/**/*.test.ts",
@@ -71,12 +63,11 @@
     "postversion": "git push --follow-tags && npm publish",
     "prepare": "husky install"
   },
-  "dependencies": {
-    "steno": "^4.0.2",
-    "tslib": "^2.6.2"
-  },
+  "dependencies": {},
   "browser": "./dist/browser.umd.js",
   "devDependencies": {
+    "steno": "^4.0.2",
+    "tslib": "^2.6.2",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@commitlint/prompt-cli": "^18.4.3",
